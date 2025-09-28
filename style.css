@@ -1,0 +1,221 @@
+/* =========================
+   Custom CSS for Abhinav Sharma Portfolio
+   ========================= */
+
+/* Custom Variables for Aesthetic Dark Mode */
+:root {
+    --bg-dark: #070a13; /* Deep Blue Black */
+    --bg-card: #131a26; /* Darker Slate */
+    --accent: #00ffff; /* Neon Blue/Cyan for accent */
+    --text-light: #e0f7fa; /* Pale Cyan */
+    --text-secondary: #b0bec5; /* Light Grayish Blue */
+}
+
+/* Set the Inter font */
+html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+/* General Styles */
+body {
+    background-color: var(--bg-dark);
+}
+#main-container {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+}
+
+/* Navigation Bar Styles */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(7, 10, 19, 0.95); /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+.nav-link {
+    transition: color 0.3s, transform 0.2s;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+.nav-link:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Locomotive Scroll CSS (critical for smooth scrolling) */
+.c-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 8px;
+    height: 100vh;
+    transform-origin: center right;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.8;
+}
+
+.c-scrollbar_thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    cursor: grab;
+    background-color: var(--accent);
+    border-radius: 4px;
+}
+
+/* 3D Flip Card Styles */
+.proj-card {
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.proj-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1); /* Subtle neon glow */
+}
+
+.card-front {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.card-back {
+    background-color: var(--accent);
+    color: var(--bg-dark);
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+/* About Reveal Wipe Animation Prep */
+#about-reveal {
+    clip-path: inset(0 100% 0 0);
+}
+#skill-reveal {
+     clip-path: inset(0 100% 0 0);
+}
+
+/* Custom glow effects for buttons */
+.cta, .about-btn, .skill-btn {
+    position: relative; overflow: hidden; transition: all 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+}
+.cta:hover, .about-btn:hover, .skill-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+/* Tailwind overrides for consistent colors */
+.bg-blue-600 { background-color: #00cccc !important; }
+.hover\:bg-blue-700:hover { background-color: #00b3b3 !important; }
+
+/* Timeline Styles */
+#timeline-line {
+    width: 4px;
+    height: 0;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    border-radius: 2px;
+}
+.timeline-card-container {
+    position: relative;
+}
+.timeline-card::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    position: absolute;
+    top: 1rem;
+    z-index: 10;
+    box-shadow: 0 0 0 5px var(--bg-dark), 0 0 10px var(--accent);
+    transition: all 0.3s;
+}
+
+/* Hover effect on timeline card */
+.timeline-card:hover::before {
+    box-shadow: 0 0 0 8px var(--bg-dark), 0 0 20px var(--accent);
+}
+
+/* Responsive Timeline adjustment */
+@media (max-width: 640px) {
+     #timeline-line { left: 1rem; transform: translateX(0); }
+     .timeline-card:nth-child(odd)::before { left: 1rem; transform: translate(-50%, 0); }
+     .timeline-card:nth-child(even)::before { left: 1rem; transform: translate(-50%, 0); }
+     .timeline-card-container > div { width: 95%; text-align: left; margin-left: 2rem; }
+     .timeline-card-container { justify-content: start !important; }
+}
+@media (min-width: 641px) {
+    .timeline-card:nth-child(odd)::before { left: 50%; transform: translate(calc(-50% - 200px)); }
+    .timeline-card:nth-child(even)::before { right: 50%; transform: translate(calc(50% + 200px)); }
+}
+
+/* Certifications Carousel */
+#cert-carousel-wrapper { overflow: hidden; padding: 2rem 0; }
+#cert-carousel {
+    display: flex; justify-content: center; align-items: center; gap: 1.5rem; height: 220px;
+}
+.cert-item {
+    min-width: 200px; width: 200px; height: 200px; background-color: var(--bg-card);
+    border: 2px solid var(--accent); flex-shrink: 0; cursor: pointer; transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Radial Progress Bar */
+.circular { transform: rotate(-90deg); }
+.circular .bg { stroke: #374151; }
+.circular .progress { stroke: var(--accent); transition: stroke-dashoffset 1s ease-out; }
+
+/* Modal Styles */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 50;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+}
+.modal.show { opacity: 1; visibility: visible; }
+.modal-content-wrapper {
+    max-width: 90%; max-height: 90%; background-color: var(--bg-card);
+    border-radius: 1rem; padding: 2rem; overflow-y: auto; position: relative;
+    border: 2px solid var(--accent); box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+.modal-close {
+    position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem;
+    color: var(--accent); cursor: pointer;
+}
