@@ -25,7 +25,7 @@ Projects (with 3D animations)
 
 Experience & Internships
 
-Certifications (3D animated showcase)
+Certifications preview showcase)
 
 Contact
 
@@ -49,24 +49,8 @@ portfolio/
 │-- script.js → Interactivity & animations
 │-- README.md → Project documentation
 
-🚀 Getting Started
-
-Clone the repository
-git clone https://github.com/yourusername/portfolio.git
-
-cd portfolio
-
-Open in VS Code (or any editor).
-
-Run with Live Server
-
-Install the Live Server extension in VS Code.
-
-Right-click on index.html → Open with Live Server.
 
 📌 Usage
-
-Navigate using the top navbar or buttons in the welcome section.
 
 Each button dynamically loads section content with smooth animations.
 
@@ -78,7 +62,7 @@ Each button dynamically loads section content with smooth animations.
 
 📊 Add analytics for visitor tracking.
 
-☁ Deploy to GitHub Pages, Netlify, or Vercel.
+☁ Deploy to GitHub Pages
 
 📧 Contact
 
@@ -86,4 +70,4 @@ Each button dynamically loads section content with smooth animations.
 📍 Hyderabad, Telangana, India
 📫 Email: abhinavsharmaa200510@gmail.com / gundu.abhinav.2005@gmail.com
 
-🌐 Portfolio: 
+🌐 Portfolio: https://github.com/Abhinavsharma10-hash/Portfolio.git
